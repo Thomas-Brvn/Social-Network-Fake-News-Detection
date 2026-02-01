@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bluesky - Fake News Checker",
+  "version": "1.0",
+  "description": "Vérifie les fake news sur Bluesky",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://bsky.app/*"],
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://bsky.app/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
