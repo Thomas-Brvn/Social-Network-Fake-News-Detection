@@ -2,6 +2,10 @@
 
 Application de detection de fake news pour Bluesky utilisant un modele de langage (LLM) pour analyser le contenu des posts.
 
+## Architecture
+
+![Diagramme d'architecture](./diagramme_projet.jpeg)
+
 ## Fonctionnalites
 
 - Analyse du contenu via un modele LLM (Ollama avec LLaMA 3.2)
