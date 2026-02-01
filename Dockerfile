@@ -1,37 +1,33 @@
-# Utiliser une image Python officielle
-FROM python:3.11-slim
+# Utiliser une image de base Python
+FROM python:3.10-slim
 
-# Définir le répertoire de travail
-WORKDIR /app
-
-# Installer les dépendances système nécessaires
+# Installer les dependances systeme necessaires
 RUN apt-get update && apt-get install -y \
-    build-essential \
     curl \
-    cmake \
-    git \
+    zstd \
     && rm -rf /var/lib/apt/lists/*
 
 # Installer Ollama
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
-# Copier les fichiers de dépendances
-COPY pyproject.toml uv.lock ./
+# Creer et definir le repertoire de travail
+WORKDIR /app
 
-# Installer les dépendances Python
+# Copier les fichiers de dependances
+COPY pyproject.toml .
+COPY uv.lock .
+
+# Installer les dependances Python
 RUN pip install --no-cache-dir -e .
 
-# Créer le répertoire pour les modèles
-RUN mkdir -p /app/models
+# Copier le reste des fichiers du projet
+COPY . .
 
-# Copier les fichiers de l'application
-COPY server.py entrypoint.sh ./
+# Exposer le port pour Streamlit
+EXPOSE 8501
 
-# Rendre le script d'entrée exécutable
-RUN chmod +x entrypoint.sh
+# Commande pour demarrer l'application
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Exposer le port sur lequel l'application s'exécute
-EXPOSE 8000
-
-# Définir la commande de démarrage
-CMD ["./entrypoint.sh"] 
+CMD ["/entrypoint.sh"]
