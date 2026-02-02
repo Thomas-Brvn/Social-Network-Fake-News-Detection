@@ -6,6 +6,8 @@ Application de detection de fake news pour Bluesky utilisant un modele de langag
 
 ![Demo](./demo.gif)
 
+*Exemple : analyse d'un post Bluesky sur un sujet d'actualite*
+
 ## Architecture
 
 ![Diagramme d'architecture](./diagramme_projet.jpeg)
