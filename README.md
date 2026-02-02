@@ -4,9 +4,7 @@ Application de detection de fake news pour Bluesky utilisant un modele de langag
 
 ## Demo
 
-https://github.com/user-attachments/assets/demo.mp4
-
-https://github.com/Thomas-Brvn/Social-Network-Fake-News-Detection/raw/main/demo.mp4
+![Demo](./demo.gif)
 
 ## Architecture
 
